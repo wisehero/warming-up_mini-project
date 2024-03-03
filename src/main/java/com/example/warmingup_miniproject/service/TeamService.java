@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.warmingup_miniproject.domain.department.Team;
-import com.example.warmingup_miniproject.domain.department.TeamRepository;
+import com.example.warmingup_miniproject.domain.team.Team;
+import com.example.warmingup_miniproject.domain.team.TeamRepository;
 import com.example.warmingup_miniproject.domain.employee.Employee;
 import com.example.warmingup_miniproject.domain.employee.EmployeeRepository;
 import com.example.warmingup_miniproject.dto.team.ResponseTeamCreate;

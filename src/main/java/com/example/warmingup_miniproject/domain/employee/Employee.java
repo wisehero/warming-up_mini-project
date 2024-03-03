@@ -2,7 +2,7 @@ package com.example.warmingup_miniproject.domain.employee;
 
 import java.time.LocalDate;
 
-import com.example.warmingup_miniproject.domain.department.Team;
+import com.example.warmingup_miniproject.domain.team.Team;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

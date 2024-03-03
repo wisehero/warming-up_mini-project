@@ -1,6 +1,6 @@
 package com.example.warmingup_miniproject.dto.team;
 
-import com.example.warmingup_miniproject.domain.department.Team;
+import com.example.warmingup_miniproject.domain.team.Team;
 
 import jakarta.validation.constraints.NotBlank;
 

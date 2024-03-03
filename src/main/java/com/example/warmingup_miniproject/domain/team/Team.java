@@ -1,4 +1,4 @@
-package com.example.warmingup_miniproject.domain.department;
+package com.example.warmingup_miniproject.domain.team;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
