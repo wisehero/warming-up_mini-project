@@ -13,11 +13,11 @@ import com.example.warmingup_miniproject.domain.attendance.Attendance;
 import com.example.warmingup_miniproject.domain.attendance.AttendanceRepository;
 import com.example.warmingup_miniproject.domain.employee.Employee;
 import com.example.warmingup_miniproject.domain.employee.EmployeeRepository;
-import com.example.warmingup_miniproject.dto.attendance.AttendanceDetail;
-import com.example.warmingup_miniproject.dto.attendance.ResponseAttendanceInfoByEmployee;
-import com.example.warmingup_miniproject.exception.AttendanceAlreadyArrivedException;
-import com.example.warmingup_miniproject.exception.AttendanceGetOffNotAvailableException;
-import com.example.warmingup_miniproject.exception.EmployeeDoesNotExistException;
+import com.example.warmingup_miniproject.dto.attendance.response.AttendanceDetail;
+import com.example.warmingup_miniproject.dto.attendance.response.ResponseAttendanceInfoByEmployee;
+import com.example.warmingup_miniproject.exception.attendance.AttendanceAlreadyArrivedException;
+import com.example.warmingup_miniproject.exception.attendance.AttendanceGetOffNotAvailableException;
+import com.example.warmingup_miniproject.exception.employee.EmployeeDoesNotExistException;
 
 import lombok.RequiredArgsConstructor;
 

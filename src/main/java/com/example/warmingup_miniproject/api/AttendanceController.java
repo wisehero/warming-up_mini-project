@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.warmingup_miniproject.dto.attendance.ResponseAttendanceInfoByEmployee;
+import com.example.warmingup_miniproject.dto.attendance.response.ResponseAttendanceInfoByEmployee;
 import com.example.warmingup_miniproject.service.AttendanceService;
 
 import lombok.RequiredArgsConstructor;

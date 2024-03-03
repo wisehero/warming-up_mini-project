@@ -1,4 +1,4 @@
-package com.example.warmingup_miniproject.dto.team;
+package com.example.warmingup_miniproject.dto.team.request;
 
 import com.example.warmingup_miniproject.domain.team.Team;
 

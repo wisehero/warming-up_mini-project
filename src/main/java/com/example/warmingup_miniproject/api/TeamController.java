@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.warmingup_miniproject.dto.team.RequestTeamCreate;
-import com.example.warmingup_miniproject.dto.team.ResponseTeamCreate;
-import com.example.warmingup_miniproject.dto.team.ResponseTeamInfo;
+import com.example.warmingup_miniproject.dto.team.request.RequestTeamCreate;
+import com.example.warmingup_miniproject.dto.team.response.ResponseTeamCreate;
+import com.example.warmingup_miniproject.dto.team.response.ResponseTeamInfo;
 import com.example.warmingup_miniproject.service.TeamService;
 
 import jakarta.validation.Valid;

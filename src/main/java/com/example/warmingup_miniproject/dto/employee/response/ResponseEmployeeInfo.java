@@ -1,4 +1,4 @@
-package com.example.warmingup_miniproject.dto.employee;
+package com.example.warmingup_miniproject.dto.employee.response;
 
 import java.time.LocalDate;
 

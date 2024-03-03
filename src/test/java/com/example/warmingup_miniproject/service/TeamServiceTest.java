@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.warmingup_miniproject.domain.team.Team;
 import com.example.warmingup_miniproject.domain.team.TeamRepository;
-import com.example.warmingup_miniproject.dto.team.RequestTeamCreate;
-import com.example.warmingup_miniproject.dto.team.ResponseTeamCreate;
-import com.example.warmingup_miniproject.exception.TeamAlreadyExistsException;
+import com.example.warmingup_miniproject.dto.team.request.RequestTeamCreate;
+import com.example.warmingup_miniproject.dto.team.response.ResponseTeamCreate;
+import com.example.warmingup_miniproject.exception.team.TeamAlreadyExistsException;
 
 @SpringBootTest
 @Transactional

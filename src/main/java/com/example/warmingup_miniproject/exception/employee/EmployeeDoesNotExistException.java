@@ -1,5 +1,6 @@
-package com.example.warmingup_miniproject.exception;
+package com.example.warmingup_miniproject.exception.employee;
 
+import com.example.warmingup_miniproject.exception.WarmingUpException;
 import com.example.warmingup_miniproject.exception.message.ExceptionMessage;
 
 public class EmployeeDoesNotExistException extends WarmingUpException {
