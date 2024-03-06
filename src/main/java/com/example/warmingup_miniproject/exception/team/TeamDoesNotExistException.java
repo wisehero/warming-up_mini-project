@@ -7,6 +7,6 @@ import com.example.warmingup_miniproject.exception.WarmingUpException;
 public class TeamDoesNotExistException extends WarmingUpException {
 
 	public TeamDoesNotExistException() {
-		super(ERR_TEAM_DOES_NOT_EXISTS.name());
+		super(ERR_TEAM_DOES_NOT_EXISTS.getMessage(), ERR_TEAM_DOES_NOT_EXISTS.getStatus());
 	}
 }

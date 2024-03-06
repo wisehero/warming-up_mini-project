@@ -10,11 +10,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 
 public record RequestEmployeeCreate(
 		@NotBlank(message = "직원의 이름은 비어있을 수 없습니다.")
 		String name,
+		@NotNull(message = "역할은 필수입니다.")
 		Role role,
 		@NotBlank(message = "팀 이름은 필수로 지정되어야 합니다.")
 		String teamName,

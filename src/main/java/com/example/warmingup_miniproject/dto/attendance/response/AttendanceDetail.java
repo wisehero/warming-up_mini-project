@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public record AttendanceDetail(
 		LocalDate date,
-		Long workingMinutes
+		Long workingMinutes,
+		boolean usingDayOff
 ) {
 }
