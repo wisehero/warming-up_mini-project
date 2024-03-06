@@ -6,7 +6,7 @@ import com.example.warmingup_miniproject.exception.WarmingUpException;
 
 public class AttendanceGetOffNotAvailableException extends WarmingUpException {
 	public AttendanceGetOffNotAvailableException() {
-		super(ERR_GET_OFF_NOT_AVAILABLE.getMessage(),
-				ERR_GET_OFF_NOT_AVAILABLE.getStatus());
+		super(ERR_ATTENDANCE_GET_OFF_NOT_AVAILABLE.getMessage(),
+				ERR_ATTENDANCE_GET_OFF_NOT_AVAILABLE.getStatus());
 	}
 }

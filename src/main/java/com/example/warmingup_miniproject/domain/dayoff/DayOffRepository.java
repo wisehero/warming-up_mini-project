@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface DayOffRepository extends JpaRepository<DayOff, Long> {
 
+	boolean existsByEmployeeIdAndDayOffDate(Long employeeId, LocalDate date);
+
 	@Query("SELECT CASE WHEN COUNT(d) > 0 THEN true ELSE false END FROM DayOff d WHERE d.employee.id = :employeeId AND d.dayOffDate = :applyDate")
 	boolean isAlreadyAppliedDayOff(@Param("employeeId") Long employeeId, @Param("applyDate") LocalDate applyDate);
 

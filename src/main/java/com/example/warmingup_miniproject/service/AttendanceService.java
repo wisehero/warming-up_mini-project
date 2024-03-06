@@ -3,7 +3,6 @@ package com.example.warmingup_miniproject.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +21,7 @@ import com.example.warmingup_miniproject.dto.attendance.response.AttendanceDetai
 import com.example.warmingup_miniproject.dto.attendance.response.ResponseAttendanceInfoByEmployee;
 import com.example.warmingup_miniproject.exception.attendance.AttendanceAlreadyArrivedException;
 import com.example.warmingup_miniproject.exception.attendance.AttendanceGetOffNotAvailableException;
+import com.example.warmingup_miniproject.exception.attendance.AttendanceTodayIsDayOffException;
 import com.example.warmingup_miniproject.exception.employee.EmployeeDoesNotExistException;
 
 import lombok.RequiredArgsConstructor;
@@ -43,9 +43,13 @@ public class AttendanceService {
 		LocalDate today = LocalDate.now();
 		Optional<Attendance> attendedEmployee = attendanceRepository.findAttendedEmployee(employee.getId(), today);
 
+		// 연차를 이미 사용한 날짜엔 출근을 기록할 수 없다.
+		if (dayOffRepository.existsByEmployeeIdAndDayOffDate(employee.getId(), today)) {
+			throw new AttendanceTodayIsDayOffException();
+		}
+
 		if (attendedEmployee.isPresent()) {
 			Attendance attendance = attendedEmployee.get();
-
 			// 당일 출근과 퇴근이 모두 기록되었다면 퇴근 시간을 null로 업데이트
 			if (attendance.getGetOffWorkTime() != null) {
 				attendance.recordGetOffWorkTime(null);
