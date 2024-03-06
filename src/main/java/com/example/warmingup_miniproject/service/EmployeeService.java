@@ -12,7 +12,9 @@ import com.example.warmingup_miniproject.domain.team.Team;
 import com.example.warmingup_miniproject.domain.team.TeamRepository;
 import com.example.warmingup_miniproject.dto.employee.request.RequestEmployeeCreate;
 import com.example.warmingup_miniproject.dto.employee.response.ResponseEmployeeCreate;
+import com.example.warmingup_miniproject.dto.employee.response.ResponseEmployeeDayOffRemains;
 import com.example.warmingup_miniproject.dto.employee.response.ResponseEmployeeInfo;
+import com.example.warmingup_miniproject.exception.employee.EmployeeDoesNotExistException;
 import com.example.warmingup_miniproject.exception.team.TeamAlreadyHasManagerException;
 import com.example.warmingup_miniproject.exception.team.TeamDoesNotExistException;
 
@@ -51,5 +53,10 @@ public class EmployeeService {
 						employee.getBirthDay(),
 						employee.getWorkStartDate()
 				)).collect(Collectors.toList());
+	}
+
+	public ResponseEmployeeDayOffRemains getDayOffRemains(Long employeeId) {
+		Employee findEmployee = employeeRepository.findById(employeeId).orElseThrow(EmployeeDoesNotExistException::new);
+		return new ResponseEmployeeDayOffRemains(findEmployee.getName(), findEmployee.getDayOffRemain());
 	}
 }

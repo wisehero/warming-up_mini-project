@@ -21,6 +21,8 @@ public class Team {
 	@Column(nullable = false, length = 30, unique = true)
 	private String teamName;
 
+	private int dayOffApplyDeadline;
+
 	public Team(String teamName) {
 		this.teamName = teamName;
 	}

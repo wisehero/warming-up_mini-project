@@ -3,14 +3,19 @@ package com.example.warmingup_miniproject.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.warmingup_miniproject.domain.attendance.Attendance;
 import com.example.warmingup_miniproject.domain.attendance.AttendanceRepository;
+import com.example.warmingup_miniproject.domain.dayoff.DayOff;
+import com.example.warmingup_miniproject.domain.dayoff.DayOffRepository;
 import com.example.warmingup_miniproject.domain.employee.Employee;
 import com.example.warmingup_miniproject.domain.employee.EmployeeRepository;
 import com.example.warmingup_miniproject.dto.attendance.response.AttendanceDetail;
@@ -28,6 +33,7 @@ public class AttendanceService {
 
 	private final AttendanceRepository attendanceRepository;
 	private final EmployeeRepository employeeRepository;
+	private final DayOffRepository dayOffRepository;
 
 	@Transactional
 	public void recordGoToWorkTime(Long employeeId) {
@@ -63,21 +69,31 @@ public class AttendanceService {
 
 	public ResponseAttendanceInfoByEmployee getAttendanceInfoByEmployee(Long employeeId, YearMonth date) {
 		Employee findEmployee = employeeRepository.findById(employeeId).orElseThrow(EmployeeDoesNotExistException::new);
-
 		LocalDate startOfMonth = date.atDay(1);
-		LocalDate endOfDate = date.atEndOfMonth();
+		LocalDate endOfMonth = date.atEndOfMonth();
+
 		List<Attendance> attendanceInfo = attendanceRepository.findAttendanceByEmployeeId(findEmployee.getId(),
 				startOfMonth,
-				endOfDate);
+				endOfMonth);
+
+		List<DayOff> dayOffTaken = dayOffRepository.findDayOffTakenByEmployeeAndMonth(
+				findEmployee.getId(), startOfMonth, endOfMonth);
 
 		List<AttendanceDetail> details = attendanceInfo.stream()
 				.map(attendance -> new AttendanceDetail(attendance.getGetOffWorkTime().toLocalDate(),
-						attendance.getWorkingMinutes())).toList();
+						attendance.getWorkingMinutes(), false))
+				.collect(Collectors.toList());
+
+		// 연차 정보도 AttendanceDetail 형태로 변환하여 details 리스트에 추가
+		List<AttendanceDetail> dayOffDetails = dayOffTaken.stream()
+				.map(dayOff -> new AttendanceDetail(dayOff.getDayOffDate(), 0L, true))
+				.toList();
+		details.addAll(dayOffDetails);
+		details.sort(Comparator.comparing(AttendanceDetail::date));
 
 		Long sum = details.stream().mapToLong(AttendanceDetail::workingMinutes)
 				.sum();
 
 		return new ResponseAttendanceInfoByEmployee(details, sum);
-
 	}
 }

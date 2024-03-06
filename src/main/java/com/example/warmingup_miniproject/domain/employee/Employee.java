@@ -42,6 +42,8 @@ public class Employee {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Team team;
 
+	private int dayOffRemain;
+
 	@Builder
 	public Employee(String name, Role role, LocalDate workStartDate, LocalDate birthDay, Team team) {
 		this.name = name;
@@ -53,5 +55,9 @@ public class Employee {
 
 	public void assignTeam(Team team) {
 		this.team = team;
+	}
+
+	public void subtractDayOffRemain() {
+		this.dayOffRemain -= 1;
 	}
 }
