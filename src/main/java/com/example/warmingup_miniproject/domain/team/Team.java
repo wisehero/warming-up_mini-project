@@ -25,5 +25,10 @@ public class Team {
 
 	public Team(String teamName) {
 		this.teamName = teamName;
+		this.dayOffApplyDeadline = 7;
+	}
+
+	public void changeDayOffApplyDeadline(int day) {
+		this.dayOffApplyDeadline = day;
 	}
 }
